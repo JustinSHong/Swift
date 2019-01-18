@@ -49,5 +49,29 @@ I still have \(apples + oranges) pieces of fruit.
 
 print(quotation)
 
+var shoppingList = ["catfish", "water", "tulips"]
+print(shoppingList)
+shoppingList[1] = "mineral water"
+print(shoppingList)
+print(shoppingList[1])
+shoppingList.append("coca cola")
+print(shoppingList)
+
+var occupations = ["Malcolm" : "Captain", "Kaylee" : "Mechanic"]
+print(occupations)
+occupations["Jayne"] = "Public Relations"
+print(occupations)
+
+var emptyArray = [String]()
+var emptyDictionary = [String: String] ()
+emptyArray.append("red")
+emptyArray.append("blue")
+emptyArray.append("green")
+print(emptyArray)
+emptyDictionary["insect"] = "grasshopper"
+emptyDictionary["mammal"] = "dog"
+emptyDictionary["reptile"] = "snake"
+emptyDictionary["plant"] = "sunflower"
+print(emptyDictionary)
 
 
