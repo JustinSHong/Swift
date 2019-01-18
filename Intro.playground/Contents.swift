@@ -29,6 +29,11 @@ let appleSummary = "I have \(apples) apples"
 let orangeSummary = "I have \(oranges) oranges"
 let fruitSummary = "I have \(apples + oranges) pieces of fruit"
 
+let num1: Float = 1
+let num2: Float = 2.5
+let sum = "The sum of num1 and num2 is \(num1 + num2)"
+print(sum)
+
 print(appleSummary)
 print(orangeSummary)
 print(fruitSummary)
@@ -41,6 +46,8 @@ Double quotes (") can appear without being escaped.
 
 I still have \(apples + oranges) pieces of fruit.
 """
+
+print(quotation)
 
 
 
