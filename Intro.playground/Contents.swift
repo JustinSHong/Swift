@@ -182,3 +182,38 @@ func addFive() -> Int {
     return y
 }
 print(addFive())
+
+func hasAnyMatches(list: [Int], condition: (Int) -> Bool) -> Bool {
+    for item in list {
+        if condition(item) {
+            return true
+        }
+    }
+    return false
+}
+func lessThanTen(number: Int) -> Bool {
+    return number < 10
+}
+var numbers = [20, 19, 7, 12]
+print(hasAnyMatches(list: numbers, condition: lessThanTen))
+
+numbers.map({(number: Int) -> Int in
+    let result = 3 * number
+    print("result \(result)")
+    return result
+})
+
+var mapped = numbers.map({number in 3 * number})
+print(mapped)
+
+var zeroOrNum = numbers.map({(number: Int) -> Int in
+    if (number % 3 == 0) {
+        return 0
+    } else {
+        return number
+    }
+})
+print(zeroOrNum)
+
+let sortedNumbers = numbers.sorted { $0 > $1 }
+print(sortedNumbers)
