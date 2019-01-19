@@ -1,3 +1,4 @@
+// VARIABLES AND CONSTANTS
 
 print("Hello World!")
 
@@ -49,6 +50,8 @@ I still have \(apples + oranges) pieces of fruit.
 
 print(quotation)
 
+// ARRAYS AND DICTIONARIES
+
 var shoppingList = ["catfish", "water", "tulips"]
 print(shoppingList)
 shoppingList[1] = "mineral water"
@@ -73,6 +76,8 @@ emptyDictionary["mammal"] = "dog"
 emptyDictionary["reptile"] = "snake"
 emptyDictionary["plant"] = "sunflower"
 print(emptyDictionary)
+
+// CONTROL FLOW AND LOOPING
 
 let individualScores = [75, 43, 103, 87, 12]
 var teamScore = 0
@@ -146,6 +151,8 @@ for i in 0..<10 {
 }
 print(count)
 
+// FUNCTIONS AND CLOSURES
+
 func greet(person: String, day: String) -> String {
     return "Hello \(person), today is \(day)"
 }
@@ -217,3 +224,129 @@ print(zeroOrNum)
 
 let sortedNumbers = numbers.sorted { $0 > $1 }
 print(sortedNumbers)
+
+// OBJECTS AND CLASSES
+
+class Shape {
+    var numberOfSides = 0
+    func simpleDescription() -> String {
+        return "A shape with \(numberOfSides) sides."
+    }
+}
+
+var shape = Shape()
+shape.numberOfSides = 7
+var shapeDescription = shape.simpleDescription()
+print(shapeDescription)
+
+class NamedShape {
+    var numberOfSides: Int = 0
+    var name: String
+    
+    init(name: String) {
+        self.name = name
+    }
+    
+    func simpleDescription() -> String {
+        return "A shape with \(numberOfSides) sides"
+    }
+}
+
+class Square: NamedShape {
+    var sideLength: Double
+    
+    init(sideLength: Double, name: String) {
+        self.sideLength = sideLength
+        super.init(name: name)
+        numberOfSides = 4
+    }
+    
+    func area() -> Double {
+        return sideLength * sideLength
+    }
+    
+    override func simpleDescription() -> String {
+        return "A square with sides of length \(sideLength)"
+    }
+}
+
+let square = Square(sideLength: 5, name: "test square")
+print(square.area())
+print(square.simpleDescription())
+
+class Circle: NamedShape {
+    var radius: Double
+    
+    init(radius: Double, name: String) {
+        self.radius = radius
+        super.init(name: name)
+        numberOfSides = 1
+    }
+    
+    func area() -> Double {
+        return Double.pi * radius * radius
+    }
+    
+    override func simpleDescription() -> String {
+        return "A circle with radius of length \(radius)"
+    }
+}
+
+let circle = Circle(radius: 3, name: "test circle")
+print(circle.area())
+print(circle.simpleDescription())
+
+class EquilateralTriangle: NamedShape {
+    var sideLength: Double = 0.0
+    
+    init(sideLength: Double, name: String) {
+        self.sideLength = sideLength
+        super.init(name: name)
+        numberOfSides = 3
+    }
+    
+    var perimeter: Double {
+        get {
+            return 3.0 * sideLength
+        }
+        set {
+            sideLength = newValue / 3.0
+        }
+    }
+    
+    override func simpleDescription() -> String {
+        return "An equilateral triangle with sides of length \(sideLength)."
+    }
+}
+
+let triangle = EquilateralTriangle(sideLength: 3.3, name: "an equilateral triangle")
+print(triangle.perimeter)
+print(triangle.simpleDescription())
+
+class TriangleAndSquare {
+    var triangle: EquilateralTriangle{
+        willSet {
+            square.sideLength = newValue.sideLength
+        }
+    }
+    
+    var square: Square {
+        willSet {
+            triangle.sideLength = newValue.sideLength
+        }
+    }
+    
+    init(size: Double, name: String) {
+        square = Square(sideLength: size, name: name)
+        triangle = EquilateralTriangle(sideLength: size, name: name)
+    }
+}
+
+var triangleAndSquare = TriangleAndSquare(size: 10, name: "another test shape")
+print(triangleAndSquare.triangle.sideLength)
+print(triangleAndSquare.triangle.simpleDescription())
+print(triangleAndSquare.square.sideLength)
+print(triangleAndSquare.square.simpleDescription())
+
+triangleAndSquare.square = Square(sideLength: 50, name: "a larger square")
+print(triangleAndSquare.triangle.sideLength)
